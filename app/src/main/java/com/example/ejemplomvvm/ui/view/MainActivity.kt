@@ -1,11 +1,11 @@
-package com.example.ejemplomvvm.view
+package com.example.ejemplomvvm.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.ejemplomvvm.databinding.ActivityMainBinding
-import com.example.ejemplomvvm.viewmodel.QuoteViewModel
+import com.example.ejemplomvvm.ui.viewmodel.QuoteViewModel
 import com.google.android.material.snackbar.BaseTransientBottomBar.AnimationMode
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        quoteViewModel.onCreate()
 
         quoteViewModel.quoteModel.observe(this, Observer { currentQuote ->
             binding.tcQuote.text = currentQuote.quote
